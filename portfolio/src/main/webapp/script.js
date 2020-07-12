@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random Image to the page.
  */
 function randomizeImage() {
   // The images directory contains 7 images, so generate a random index between
