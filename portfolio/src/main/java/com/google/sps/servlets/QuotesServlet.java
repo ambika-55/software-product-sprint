@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.data.Quotes;
+import com.google.sps.exchanges.GetQuotesResponse;
+import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,12 +29,12 @@ import java.util.List;
 @WebServlet("/random-quote")
 public class QuotesServlet extends HttpServlet {
 
-  private List<String> quotes;
+  private List<Quotes> quotes;
 
   @Override
   public void init() {
 
-    quotes = new ArrayList<String>() {{
+    List<String> allQuotes = new ArrayList<String>() {{
         add("All our dreams can come true, if we have the courage to pursue them. – Walt Disney");
         add("The secret of getting ahead is getting started. – Mark Twain");
         add("If people are doubting how far you can go, go so far that you can’t hear them anymore. – Michele Ruiz");
@@ -42,14 +45,17 @@ public class QuotesServlet extends HttpServlet {
         add("In the middle of every difficulty lies opportunity. – Albert Einstein");
     }};
     
+    quotes.add(new Quotes("Quotations", allQuotes));
   }
 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String quote = quotes.get((int) (Math.random() * quotes.size()));
+    GetQuotesResponse getQuotesResponse = new GetQuotesResponse(quotes);
+    String responseString = new Gson().toJson(getQuotesResponse);
 
-    response.setContentType("text/html;");
-    response.getWriter().println(quote);
+	response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    response.getWriter().print(responseString);
   }
 }
