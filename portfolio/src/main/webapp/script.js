@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+function fadeIn(el) {
+  el.style.opacity = 0;
+  var tick = function () {
+      el.style.opacity = +el.style.opacity + 0.01;
+      if (+el.style.opacity < 1) {
+          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+  };
+  tick();
+}
+
 /**
  * Adds a random Image to the page.
  */
@@ -23,9 +34,13 @@ function randomizeImage() {
 
   const imgElement = document.createElement('img');
   imgElement.src = imgUrl;
+  imgElement.id = 'random-image';
 
   const imageContainer = document.getElementById('random-image-container');
   // Remove the previous image.
   imageContainer.innerHTML = '';
   imageContainer.appendChild(imgElement);
+  fadeIn(imgElement);
 }
+
+setInterval( randomizeImage, 2000 )
