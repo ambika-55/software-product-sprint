@@ -44,3 +44,13 @@ function randomizeImage() {
 }
 
 setInterval( randomizeImage, 2000 )
+
+/** 
+ * To fetch a random quote from the server and add it to our portfolio page
+ * responsePromise -> TextPromise -> added to DOM
+ */
+function getRandomQuote() {
+  fetch('/random-quote').then(response => response.text()).then((quote) => {
+    document.getElementById('quote-container').innerText = quote;
+  });
+}
