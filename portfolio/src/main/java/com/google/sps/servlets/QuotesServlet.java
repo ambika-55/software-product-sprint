@@ -14,8 +14,8 @@
 
 package com.google.sps.servlets;
 
-import com.google.sps.data.Quotes;
-import com.google.sps.exchanges.GetQuotesResponse;
+import com.google.sps.Data.Quotes;
+import com.google.sps.Helpers.GetQuotesResponse;
 import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -45,6 +45,7 @@ public class QuotesServlet extends HttpServlet {
         add("In the middle of every difficulty lies opportunity. – Albert Einstein");
     }};
     
+    quotes = new ArrayList<Quotes>();
     quotes.add(new Quotes("Quotations", allQuotes));
   }
 

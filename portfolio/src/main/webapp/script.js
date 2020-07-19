@@ -50,7 +50,11 @@ setInterval( randomizeImage, 2000 )
  * responsePromise -> TextPromise -> added to DOM
  */
 function getRandomQuote() {
-  fetch('/random-quote').then(response => response.text()).then((quote) => {
-    document.getElementById('quote-container').innerText = quote;
+  fetch('/random-quote').then(response => response.json()).then((quote) => {
+    
+    var val = Math.floor(Math.random() * quote.quotes.length);
+    console.log(quote.quotes[val]);
+    document.getElementById('quote-container').innerText = quote.quotes[val];
   });
 }
+git 
