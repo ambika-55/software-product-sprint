@@ -14,8 +14,6 @@
 
 package com.google.sps.servlets;
 
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -33,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Servlet that handle comments data */
-@WebServlet("/random-quote")
+@WebServlet("/comment-data")
 public class CommentServlet extends HttpServlet {
 
     // List of Comment objects
@@ -51,15 +49,14 @@ public class CommentServlet extends HttpServlet {
             long id = entity.getKey().getId();
             String text = (String) entity.getProperty("text");
             long timestamp = (long) entity.getProperty("timestamp");
-            String emailId = (String) entity.getProperty("emailId");
             
-            Comment comment = new Comment(id, text, timestamp, emailId);
+            Comment comment = new Comment(id, text, timestamp);
             comments.add(comment);
         }
 
         Gson gson = new Gson();
 
-        response.setContentType("application/json;");
+        response.setContentType("application/json");
         response.getWriter().println(gson.toJson(comments));
     }
 
@@ -71,10 +68,6 @@ public class CommentServlet extends HttpServlet {
         Entity commentEntity = new Entity("Comment");
         commentEntity.setProperty("text", text);
         commentEntity.setProperty("timestamp", timestamp);
-
-        UserService userService = UserServiceFactory.getUserService();
-        String emailId = userService.getCurrentUser().getEmail();
-        commentEntity.setProperty("emailId", emailId);
 
         DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
         datastoreService.put(commentEntity);

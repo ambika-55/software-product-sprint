@@ -73,8 +73,8 @@ function getCommentsData() {
     
     for(i = 0 ; i < comments.length ; i++){
         dataElement.appendChild(
-        createListElement(comments[i].emailId + ' : ' + comments[i].text));
-        console.log('Comment ' + comments[i].emailId + ' : ' + comments[i].text);
+        createListElement('Comment :' + comments[i].text));
+        console.log('Comment :' + comments[i]);
     }
     
   });
@@ -88,7 +88,5 @@ function createListElement(text) {
 }
 
 function onloadFunctions(){
-  console.log("Starting execution of getCommentsData()");
   getCommentsData();
-  console.log("Completed the execution of getCommentsData()");
 }

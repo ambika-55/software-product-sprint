@@ -12,12 +12,9 @@ public class Comment{
     // Timestamp
     private long timestamp;
 
-    private String emailId;
-
-    public Comment(long id, String text, long timestamp, String emailId){
+    public Comment(long id, String text, long timestamp){
         this.id = id;
         this.text = text;
         this.timestamp = timestamp;
-        this.emailId = emailId;
     }
 }
