@@ -57,4 +57,38 @@ function getRandomQuote() {
     document.getElementById('quote-container').innerText = quote.quotes[val];
   });
 }
-git 
+
+/**
+ * To fetch comments from the server and adds them to the DOM.
+ */
+function getCommentsData() {
+  fetch('/comment-data').then(response => response.json()).then((comments) => {
+
+    // creating HTML content from the comments fethed from server
+
+    console.log("Comments from the Servlet: " + comments);
+
+    const dataElement = document.getElementById('comment-container');
+    dataElement.innerHTML = '';
+    
+    for(i = 0 ; i < comments.length ; i++){
+        dataElement.appendChild(
+        createListElement(comments[i].emailId + ' : ' + comments[i].text));
+        console.log('Comment ' + comments[i].emailId + ' : ' + comments[i].text);
+    }
+    
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+
+function onloadFunctions(){
+  console.log("Starting execution of getCommentsData()");
+  getCommentsData();
+  console.log("Completed the execution of getCommentsData()");
+}
