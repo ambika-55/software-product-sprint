@@ -71,7 +71,7 @@ function getCommentsData() {
     const dataElement = document.getElementById('comment-container');
     dataElement.innerHTML = '';
     
-    for(i = 0 ; i < comments.length ; i++){
+    for (i = 0 ; i < comments.length ; i++) {
         dataElement.appendChild(
         createListElement('Comment :' + comments[i].text));
         console.log('Comment :' + comments[i]);
