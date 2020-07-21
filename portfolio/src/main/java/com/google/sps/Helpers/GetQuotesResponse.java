@@ -1,6 +1,6 @@
-package com.google.sps.exchanges;
+package com.google.sps.Helpers;
 
-import com.google.sps.data.Quotes;
+import com.google.sps.Data.Quotes;
 import java.util.List;
 
 public class GetQuotesResponse {

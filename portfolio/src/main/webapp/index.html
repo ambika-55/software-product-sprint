@@ -21,7 +21,7 @@
     />
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="onloadFunctions()">
     <!-- Header -->
     <header id="header">
       <div class="inner">
@@ -128,11 +128,21 @@
             </section>
           </div>
     </div>
-    <div id="content">
+    <!-- <div id="content">
       <h1>Random Quotes</h1>
       <p>Click here to see a random quote:</p>
       <button onclick="getRandomQuote()">Fetch a quote!</button>
-      <div id="quote-container"></div>
+      <div id="comment-container"></div> -->
+    <!-- Add Comments Section -->
+    <form action="/comment-data" method="POST">
+      <p>Enter a comment:</p>
+      <textarea name="comment-input">This portfolio is amazing.</textarea>
+      <br/><br/>
+      <input type="submit" />
+    </form>
+
+     <!-- Preview Comments Section -->
+      <div id="comment-container"></div> 
     </div>
   </div>
   </body>

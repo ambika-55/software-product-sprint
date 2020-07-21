@@ -1,4 +1,4 @@
-package com.google.sps.data;
+package com.google.sps.Data;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Quotes {
     private List<String> quotes;
 
     public Quotes(String title, List<String> quoteList) {
-        this.name = name;
-        this.quotes = quotes;
+        this.name = title;
+        this.quotes = quoteList;
     }
 }

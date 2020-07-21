@@ -50,7 +50,43 @@ setInterval( randomizeImage, 2000 )
  * responsePromise -> TextPromise -> added to DOM
  */
 function getRandomQuote() {
-  fetch('/random-quote').then(response => response.text()).then((quote) => {
-    document.getElementById('quote-container').innerText = quote;
+  fetch('/random-quote').then(response => response.json()).then((quote) => {
+    
+    var val = Math.floor(Math.random() * quote.quotes.length);
+    console.log(quote.quotes[val]);
+    document.getElementById('quote-container').innerText = quote.quotes[val];
   });
+}
+
+/**
+ * To fetch comments from the server and adds them to the DOM.
+ */
+function getCommentsData() {
+  fetch('/comment-data').then(response => response.json()).then((comments) => {
+
+    // creating HTML content from the comments fethed from server
+
+    console.log("Comments from the Servlet: " + comments);
+
+    const dataElement = document.getElementById('comment-container');
+    dataElement.innerHTML = '';
+    
+    for (i = 0 ; i < comments.length ; i++) {
+        dataElement.appendChild(
+        createListElement('Comment :' + comments[i].text));
+        console.log('Comment :' + comments[i]);
+    }
+    
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+
+function onloadFunctions(){
+  getCommentsData();
 }
