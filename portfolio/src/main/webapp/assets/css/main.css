@@ -511,3 +511,19 @@ label {
 #random-image-container {
   padding: 2em;
 }
+
+#map {
+    border-radius: 1.5em;
+    margin-right: 3em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    width: 20em;
+    height: 20em;
+}
+
+#comments {
+    padding: 2em;
+}
+#comment-container {
+    padding: 2em;
+}
