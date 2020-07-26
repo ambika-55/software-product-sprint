@@ -87,6 +87,15 @@ function createListElement(text) {
   return liElement;
 }
 
+/** Creates a map and adds it to the page. */
+function createMap() {
+  const map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: {lat: 28.711443, lng: 77.204480}, zoom: 8});
+}
+
+
 function onloadFunctions(){
   getCommentsData();
+  createMap();
 }
