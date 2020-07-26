@@ -113,37 +113,43 @@
                 </a>
                 Delhi, India.<br />
                 Representing women in tech.
-              </p>
-              <ul class="actions">
-                <li class="wide-button">
-                  <a
-                    href="https://drive.google.com/file/d/1qbXQmibm5TZUaUQc1FjVa5u9RUS5A2K7/view?usp=sharing"
-                    class="button"
-                    target="_blank"
-                  >
-                    Full Resume
-                  </a>
-                </li>
-              </ul>
+                </p>
+                <ul class="actions">
+                    <li class="wide-button">
+                    <a
+                        href="https://drive.google.com/file/d/1qbXQmibm5TZUaUQc1FjVa5u9RUS5A2K7/view?usp=sharing"
+                        class="button"
+                        target="_blank"
+                    >
+                        Full Resume
+                    </a>
+                    </li>
+                </ul>
+                </div>
+                </div>
             </section>
-          </div>
     </div>
+ 
     <!-- <div id="content">
       <h1>Random Quotes</h1>
       <p>Click here to see a random quote:</p>
       <button onclick="getRandomQuote()">Fetch a quote!</button>
       <div id="comment-container"></div> -->
     <!-- Add Comments Section -->
-    <form action="/comment-data" method="POST">
-      <p>Enter a comment:</p>
-      <textarea name="comment-input">This portfolio is amazing.</textarea>
-      <br/><br/>
-      <input type="submit" />
-    </form>
-
-     <!-- Preview Comments Section -->
-      <div id="comment-container"></div> 
+    <div class="box-row"> 
+        <div id="comments">
+            <form action="/comment-data" method="POST">
+            <p>Enter a comment:</p>
+            <textarea name="comment-input">This portfolio is amazing.</textarea>
+            <br/><br/>
+            <input type="submit" />
+            </form>
+            <!-- Preview Comments Section -->
+             <div id="comment-container"></div> 
+        </div>
+        <div id="map">
+        </div>
     </div>
-  </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNSx0u-nLQKS8kHvzdNjHeCTBKmQONoP4"></script>
   </body>
 </html>

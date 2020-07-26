@@ -511,3 +511,10 @@ label {
 #random-image-container {
   padding: 2em;
 }
+
+#map {
+    border-radius: 1.5em;
+    margin-right: 3em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
